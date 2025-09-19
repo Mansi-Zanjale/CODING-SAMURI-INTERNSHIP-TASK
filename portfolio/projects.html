@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Slider | portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">Mansi Zanjale</div>
+      <div class="hamburger" onclick="toggleMenu()">≣</div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+  </header>
+
+  <h2 class="heading">Projects</h2>
+  <p class="subtitle">Most recent work</p>
+
+  <div class="center-box">
+    <div class="slider-container">
+      <button class="arrow left" onclick="prevSlide()">&#8592;</button>
+
+      <div class="slides-wrapper" id="slidesWrapper">
+        <div class="slide">
+          <img src="p_img/heavens-kitchen.png" alt="Heavens Kitchen" />
+          <h3>Heavens Kitchen</h3>
+          <p>Dynamic food ordering website.</p>
+          <button class="b"><a href="https://github.com/Mansi-Zanjale/Heavens-Kitchen" target="_blank">Project
+              Link</a></button>
+        </div>
+
+        <div class="slide">
+          <img src="p_img/quizzle.png" alt="Quizzle" />
+          <h3>Quizzle</h3>
+          <p>Interactive quiz platform.</p>
+          <button class="b"><a href="https://github.com/Mansi-Zanjale/Quizzle" target="_blank">Project Link</a></button>
+        </div>
+
+        <div class="slide">
+          <img src="p_img/tic-tac-toe.png" alt="Tic Tac Toe" />
+          <h3>Tic Tac Toe</h3>
+          <p>Fun logic game using HTML, CSS, JS.</p>
+          <button class="b"><a href="https://github.com/Mansi-Zanjale/Tick-Tac-Toe" target="_blank">Project
+              Link</a></button>
+        </div>
+
+        <div class="slide">
+          <img src="p_img/rock-paper-scissors.png" alt="rock-paper-scissors" />
+          <h3>Rock-paper-scissors</h3>
+          <p>Classic hand-gesture game built with HTML, CSS, JS.</p>
+          <button class="b"><a href="https://github.com/Mansi-Zanjale/Rock-Paper-Scissors" target="_blank">Project
+              Link</a></button>
+        </div>
+
+        <div class="slide">
+          <img src="p_img/pigy-game.png" alt="pigy-game" />
+          <h3>Pigy-game</h3>
+          <p>Two-player game with strategic risk and score resets.</p>
+          <button class="b"><a href="https://github.com/Mansi-Zanjale/Piggy-Game" target="_blank">Project
+              Link</a></button>
+        </div>
+
+        <div class="slide">
+          <img src="p_img/guess-the-number.png" alt="guess-the-number" />
+          <h3>Guess-the-number</h3>
+          <p>Number guessing game with score deduction on each wrong attempt.</p>
+          <button class="b"><a href="https://github.com/Mansi-Zanjale/Guess-The-Number" target="_blank">Project
+              Link</a></button>
+        </div>
+
+      </div>
+
+      <button class="arrow right" onclick="nextSlide()">&#8594;</button>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+  <script>
+
+    const wrapper = document.getElementById("slidesWrapper");
+    const slides = document.querySelectorAll(".slide");
+    let currentIndex = 0;
+
+    function updateSlide() {
+      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlide();
+    }
+  </script>
+</body>
+
+</html>

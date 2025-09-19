@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I'm Mansi Zanjale, a Web Developer skilled in HTML, CSS, JavaScript and React. Check out my projects, skills, and experience.">
+    <meta name="keywords" content="Mansi Zanjale, Web Developer, Frontend Developer, Portfolio, HTML CSS JavaScript, React Developer">
+    <meta name="author" content="Mansi Zanjale">
+    <title>Mansi Zanjale | Web Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">Mansi Zanjale</div>
+            <div class="hamburger" onclick="toggleMenu()">≣</div>
+            <div class="menu">
+                <a href="skills.html">Skills</a>
+                <a href="certificates.html">Certificates</a>
+                <a href="projects.html">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="content">
+        <div class="first ani">
+            <h2 class="intro">Hello,<br>
+                __I'm Mansi
+            </h2>
+            <div class="slider">
+                <span id="text"></span>
+            </div>
+            <h2>Computer Application Student</h2>
+            <div class="btn">
+                <button><a href="#contact">Hire me</a></button>
+            </div>
+
+        </div>
+
+        <div class="second ani">
+            <img src="images/mansi.png" alt="Your Photo" class="img">
+        </div>
+    </section>
+
+    <section id="self">
+        <div class="first ani">
+
+            <div>
+                <h1>About me</h1>
+                I am an enthusiastic and detail-oriented web developer with a strong foundation in responsive design. As
+                a fresher, I am passionate about creating responsive and user-friendly websites with clean and efficient
+                code. I have developed projects, which showcase my ability to work on both frontend and backend
+                development.<br>
+                With a keen eye for UI design, I enjoy building visually appealing interfaces using
+                Bootstrap, Animate.css, and other modern tools. I am a quick learner who adapts easily to new technologies
+                and thrives in collaborative environments.
+                I aim to grow as a full-stack developer while contributing to innovative and impactful web projects.
+            </div>
+        </div>
+
+    </section>
+
+    <section id="imp">
+        <div class="skills first ani">
+            <h1>Skills</h1>
+
+            <div class="bar">
+
+                <div class="fill w80-90">
+                    <p>HTML 80-90%</p>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="fill w70-80">
+                    <p>CSS 70-80%</p>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="fill w60-70">
+                    <p>JS 60-70%</p>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="fill w50-60">
+                    <p>MYSQL 50-60%</p>
+                </div>
+            </div>
+            <button class="b"><a href="skills.html">There's more ----> </a></button>
+
+        </div>
+
+        <div class="exp second ani">
+            <div>
+                <h4>Expireance</h4>
+                <p>Fresher</p>
+                ● have 2 years of personal expireance in web development <br>
+                ● developed some freelance projects<br>
+                <button class="b"><a href="https://drive.google.com/uc?export=download&id=1bBLtlQ0RCTuSwoPhedkwlyZwZSXsYyon" download target="_blank">Download Resume</a></button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="work">
+        <div class="project first ani">
+            <h1>I build &<br>Design stuff</h1>
+            <p>open source projects, web apps and experimentals.</p>
+            <button class="b"><a href="projects.html">See my work ----></a></button>
+        </div>
+        <div class="certi second ani">
+            <h1>Some of my<br>Knowledge collection</h1>
+            <p>because learning is <br>my superpower.</p>
+            <button class="b"><a href="certificates.html">See my honors ----></a></button>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <h1 class="first ani">Send me a message!</h1>
+        <p class="second ani">Feel free to reach out through the form or any of the following methods. <br>I'm just a
+            message away. Looking forward to hearing from you.</p>
+        <div class="wrap">
+            <div class="form first ani">
+                <form action="https://formsubmit.co/mansizanjale2824@gmail.com" method="POST">
+
+                    <!-- Disable FormSubmit captcha screen -->
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" rows="3" placeholder="MESSAGE" required></textarea>
+
+                    <!-- redirect to thank-you page
+                  we can't write only thank-you.html cause we are using formsubmit -->
+                    <input type="hidden" name="_redirect"
+                        value="https://Mansi-Zanjale.github.io/portfolio/thankyou.html">
+
+                    <button class="b" type="submit">SEND</button>
+                </form>
+
+            </div>
+
+            <div class="links second ani">
+                <!-- Email -->
+                <a href="mailto:mansizanjale2824@gmail.com" class="icon-link email" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 13.065L0 6V4a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v2l-12 7.065z" />
+                        <path d="M12 15L0 8v12a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V8l-12 7z" />
+                    </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/mansi-zanjale" target="_blank" class="icon-link linkedin"
+                    aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.225.792 24 1.771 24h20.451C23.205 24 24 23.225 24 22.273V1.727C24 .774 23.205 0 22.225 0zM7.072 20.452H3.58V9.047h3.492v11.405zM5.326 7.548a2.027 2.027 0 1 1 .001-4.054 2.027 2.027 0 0 1 0 4.054zM20.452 20.452h-3.49v-5.605c0-1.336-.024-3.056-1.861-3.056-1.862 0-2.146 1.454-2.146 2.954v5.707h-3.49V9.047h3.352v1.557h.048c.468-.888 1.611-1.822 3.313-1.822 3.543 0 4.197 2.333 4.197 5.366v6.304z" />
+                    </svg>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/Mansi-Zanjale" target="_blank" class="icon-link github" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 .297a12 12 0 0 0-3.79 23.4c.6.113.82-.258.82-.577v-2.234c-3.34.724-4.042-1.61-4.042-1.61a3.18 3.18 0 0 0-1.34-1.77c-1.093-.746.083-.73.083-.73a2.52 2.52 0 0 1 1.84 1.235 2.56 2.56 0 0 0 3.495 1 2.57 2.57 0 0 1 .762-1.61c-2.667-.304-5.467-1.334-5.467-5.932a4.64 4.64 0 0 1 1.235-3.22 4.3 4.3 0 0 1 .117-3.175s1.008-.322 3.3 1.23a11.48 11.48 0 0 1 6 0c2.292-1.552 3.3-1.23 3.3-1.23a4.3 4.3 0 0 1 .117 3.175 4.64 4.64 0 0 1 1.235 3.22c0 4.61-2.8 5.625-5.475 5.922a2.89 2.89 0 0 1 .82 2.243v3.33c0 .32.218.694.825.576A12 12 0 0 0 12 .297z" />
+                    </svg>
+                </a>
+
+                <!-- Phone -->
+                <a href="tel:+919923392829" class="icon-link phone" aria-label="Phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1.004 1.004 0 0 1 1.06-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1v3.52a1 1 0 0 1-1 1C10.07 22 2 13.93 2 4a1 1 0 0 1 1-1h3.52a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56.13.36.05.77-.24 1.06l-2.23 2.17z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Copyright &copy; 2025 | Designed by Mansi Zanjale</p>
+    </footer>
+
+
+    <script src="script.js"> </script>
+</body>
+
+</html>
