@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProductVista | Interactive Showcase</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #6c63ff;
+        --secondary: #ff6b6b;
+        --accent: #4ecdc4;
+        --dark: #2f2e41;
+        --light: #f8f9fa;
+        --purple: #9b5de5;
+        --pink: #f15bb5;
+        --yellow: #fee440;
+        --blue: #00bbf9;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--dark);
+        overflow-x: hidden;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        min-height: 100vh;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .navbar-brand {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        color: var(--primary);
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        z-index: 2;
+        position: relative;
+      }
+
+      .hero-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        line-height: 1.1;
+      }
+
+      .hero-title span {
+        background: linear-gradient(135deg, var(--purple), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        max-width: 500px;
+      }
+
+      /* Add to your CSS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-title,
+      .hero-subtitle {
+        opacity: 0;
+        animation: fadeUp 1s ease forwards;
+      }
+
+      .hero-title {
+        animation-delay: 0.2s;
+      }
+      .hero-subtitle {
+        animation-delay: 0.5s;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--purple), var(--primary));
+        border: none;
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 25px rgba(108, 99, 255, 0.4);
+      }
+
+      /* Interactive Product Showcase */
+      .product-showcase {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .interactive-demo {
+        background: white;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        margin: 40px 0;
+        text-align: center;
+      }
+
+      .demo-title {
+        font-size: 1.8rem;
+        color: var(--dark);
+      }
+
+      .demo-container {
+        position: relative;
+        min-height: 350px;
+        background: linear-gradient(45deg, #c6c8ca, #aaabad);
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .demo-container model-viewer {
+        width: 100%;
+        height: 400px;
+      }
+
+      @media (max-width: 768px) {
+        .demo-container {
+          min-height: 300px;
+        }
+      }
+
+      .demo-controls {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .demo-controls .btn {
+        flex: 1;
+        min-width: 100px;
+        max-width: 200px;
+      }
+
+      /* On small screens, make them full width stacked */
+      @media (max-width: 576px) {
+        .demo-controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .demo-controls .btn {
+          width: 100%;
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      .feature-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 0;
+        background: linear-gradient(to bottom, var(--purple), var(--pink));
+        transition: all 0.5s ease;
+      }
+
+      .feature-card:hover::before {
+        height: 100%;
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, var(--purple), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 5px;
+        background: linear-gradient(to right, var(--purple), var(--primary));
+        margin: 15px auto;
+        border-radius: 5px;
+      }
+
+      .model-slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .nav-btn {
+        font-size: 2rem;
+        background: #6c63ff;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .nav-btn:hover {
+        background: #4e3cbf;
+      }
+
+      .footer {
+        color: var(--bg-color);
+      }
+
+      model-viewer {
+        width: 100%;
+        height: 400px;
+      }
+
+      @media (max-width: 768px) {
+        model-viewer {
+          height: 250px;
+        }
+      }
+
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #222222;
+        --primary: #007bff;
+      }
+
+      body {
+        background: var(--bg-color);
+        color: var(--text-color);
+        transition: background 0.3s, color 0.3s;
+      }
+
+      h4 {
+        color: var(--text-color);
+      }
+
+      .section-title {
+        color: var(--text-color);
+      }
+
+      .feature-card {
+        background-color: var(--card-color);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 25px rgb(133, 132, 132);
+      }
+
+      .interactive-demo {
+        background-color: var(--card-color);
+      }
+
+      .demo-title {
+        color: var(--text-color);
+      }
+
+      .navbar {
+        background-color: var(--card-color);
+      }
+      .nav-link {
+        color: var(--text-color);
+      }
+      .nav-link:hover {
+        color: var(--purple);
+      }
+      .navbar-brand:hover {
+        color: var(--purple);
+      }
+
+      .product-showcase {
+        background-color: var(--demo-color);
+        box-shadow: 0 10px 35px rgb(133, 132, 132);
+      }
+      .hero-title {
+        color: var(--text-color);
+      }
+
+      /* Dark theme */
+      body.dark {
+        --bg-color: #0e0d0d;
+        --text-color: #eeeeee;
+        --primary: #66aaff;
+        --card-color: #212436;
+        --demo-color: #2d303f;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">ProductVista</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#demo">Demo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#technology">Technology</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="themeToggle">🌙 Dark Mode</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container hero-content">
+        <div class="row align-items-center">
+          <!-- Left Side: Text -->
+          <div class="col-lg-6">
+            <h1 class="hero-title">
+              Interactive <span>Product Showcase</span>
+            </h1>
+            <h4 class="hero-subtitle">
+              My internship project featuring an immersive 3D product
+              visualization with interactive controls and customization options.
+            </h4>
+          </div>
+
+          <!-- Right Side: 3D Model -->
+          <div class="col-lg-6">
+            <div class="product-showcase">
+              <!-- Model Viewer with slider controls -->
+              <div class="model-slider">
+                <button class="nav-btn" id="prevModel">⟨</button>
+
+                <model-viewer
+                  id="animeViewer"
+                  src="models/figure1.glb"
+                  alt="Anime Figure"
+                  loading="lazy"
+                >
+                </model-viewer>
+
+                <button class="nav-btn" id="nextModel">⟩</button>
+              </div>
+              <h3
+                id="modelName"
+                style="text-align: center; margin-top: 10px; font-weight: 500"
+              ></h3>
+              <button class="btn btn-secondary" id="fullscreenBtn">
+                Fullscreen
+              </button>
+              <button class="btn btn-success" id="selectBtn">Select</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="py-5">
+      <div class="container py-5">
+        <h2 class="section-title" id="select">
+          Interactive <span style="color: var(--blue)">Demo</span>
+        </h2>
+        <div class="interactive-demo">
+          <h3 class="demo-title">Try It Yourself</h3>
+
+          <!-- 3D Model Viewer -->
+          <div class="demo-container" id="demo-container">
+            <model-viewer
+              id="demo-model"
+              src="models/astronaut.glb"
+              alt="3D Figure"
+              camera-controls
+              loading="lazy"
+              style="width: 100%; height: 400px"
+            >
+            </model-viewer>
+          </div>
+
+          <!-- Controls -->
+          <div class="demo-controls">
+            <button class="btn btn-primary" id="demo-rotate">Rotate</button>
+            <button class="btn btn-primary" id="demo-stop">Stop</button>
+            <button class="btn btn-primary" id="demo-change">
+              Change Figure
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+      <div class="container py-5">
+        <h2 class="section-title">
+          Product <span style="color: var(--purple)">Features</span>
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="bx bx-layer"></i>
+              </div>
+              <h3>3D Visualization</h3>
+              <p>
+                Interactive 3D product visualization with rotation, zoom, and
+                detailed inspection capabilities.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="bx bx-cube"></i>
+              </div>
+              <h3>High Quality Models</h3>
+              <p>
+                Detailed and optimized 3D figures for smooth performance and
+                clear visuals.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="bx bx-expand"></i>
+              </div>
+              <h3>Immersive Experience</h3>
+              <p>
+                Fullscreen mode and VR compatibility for an immersive product
+                exploration experience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="py-5">
+      <div class="container py-5">
+        <h2 class="section-title">
+          Technology <span style="color: var(--accent)">Stack</span>
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-3 col-6">
+            <div class="feature-card text-center">
+              <div class="feature-icon">
+                <i class="fab fa-html5"></i>
+              </div>
+              <h3>HTML5</h3>
+              <p>Semantic structure and accessibility features</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="feature-card text-center">
+              <div class="feature-icon">
+                <i class="fab fa-css3-alt"></i>
+              </div>
+              <h3>CSS3</h3>
+              <p>Modern animations and responsive design</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="feature-card text-center">
+              <div class="feature-icon">
+                <i class="fab fa-js"></i>
+              </div>
+              <h3>JavaScript</h3>
+              <p>Interactive functionality and dynamic content</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="feature-card text-center">
+              <div class="feature-icon">
+                <i class="fas fa-cube"></i>
+              </div>
+              <h3>Bootstrap 5</h3>
+              <p>Responsive layout and UI components</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5" style="background: var(--dark); color: white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>ProductVista</h2>
+            <span
+              >An interactive product showcase developed as an internship
+              project.</span
+            >
+          </div>
+          <div class="col-md-6 text-md-end">
+            <span>© 2023 ProductVista. All rights reserved.<br /></span>
+            <span>Internship Project | Created with ❤️</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+      // Models & Names
+      const models = [
+        "models/figure1.glb",
+        "models/figure2.glb",
+        "models/figure3.glb",
+        "models/figure4.glb",
+        "models/figure5.glb",
+        "models/figure6.glb",
+        "models/figure7.glb",
+        "models/figure8.glb",
+      ];
+      const modelNames = [
+        "Son Goku",
+        "Gohan",
+        "Vegeta",
+        "Krillin",
+        "Yamcha",
+        "Tien Shinhan",
+        "Piccolo",
+        "Frieza",
+      ];
+
+      // Elements
+      let currentIndex = 0;
+      const viewer = document.getElementById("animeViewer");
+      const modelNameEl = document.getElementById("modelName");
+      const demoModel = document.getElementById("demo-model");
+
+      // Function to update hero section model
+      function updateModel() {
+        viewer.setAttribute("src", models[currentIndex]);
+        modelNameEl.textContent = modelNames[currentIndex];
+      }
+
+      // Hero section navigation
+      document.getElementById("nextModel").addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % models.length;
+        updateModel();
+      });
+
+      document.getElementById("prevModel").addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + models.length) % models.length;
+        updateModel();
+      });
+
+      // Fullscreen button
+      document.getElementById("fullscreenBtn").addEventListener("click", () => {
+        if (viewer.requestFullscreen) {
+          viewer.requestFullscreen();
+        }
+      });
+
+      // Initialize hero model on page load
+      updateModel();
+
+      // Select button → send chosen model to demo section
+      const selectBtn = document.getElementById("selectBtn");
+      selectBtn.addEventListener("click", () => {
+        const currentModelSrc = viewer.getAttribute("src");
+        demoModel.setAttribute("src", currentModelSrc);
+        document
+          .getElementById("select")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Demo Controls
+      const rotateBtn = document.getElementById("demo-rotate");
+      const stopBtn = document.getElementById("demo-stop");
+      const changeBtn = document.getElementById("demo-change");
+
+      // Start Auto Rotate
+      rotateBtn.addEventListener("click", () => {
+        demoModel.setAttribute("auto-rotate", "true");
+        demoModel.setAttribute("rotation-per-second", "50deg");
+      });
+
+      // Stop Auto Rotate (manual mode)
+      stopBtn.addEventListener("click", () => {
+        demoModel.removeAttribute("auto-rotate");
+      });
+
+      // Change Figure → navigate back to hero section
+      changeBtn.addEventListener("click", () => {
+        document.getElementById("hero").scrollIntoView({ behavior: "smooth" });
+      });
+
+      const toggleBtn = document.getElementById("themeToggle");
+
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        toggleBtn.textContent = document.body.classList.contains("dark")
+          ? "☀️ Light Mode"
+          : "🌙 Dark Mode";
+      });
+    </script>
+  </body>
+</html>
